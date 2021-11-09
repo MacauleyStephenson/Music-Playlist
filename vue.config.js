@@ -1,5 +1,7 @@
 module.exports = {
   css: {
-    modules: true
-  }
-}
+    modules: true,
+  },
+
+  lintOnSave: false,
+};
