@@ -1,7 +1,8 @@
 module.exports = {
+  lintOnSave: false,
+
   css: {
     modules: true,
-  },
-
-  lintOnSave: false,
+    extract: false
+  }
 };
