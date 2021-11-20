@@ -52,10 +52,11 @@
             <!-- Email -->
             <div class="mb-3">
               <label class="inline-block mb-2">Email</label>
-              <input type="email"
+              <vee-field type="email" name="email"
                 class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
                   duration-500 focus:outline-none focus:border-black rounded"
                 placeholder="Enter Email" />
+				<ErrorMessage class="text-red-600" name="email"/>
             </div>
             <!-- Password -->
             <div class="mb-3">
@@ -72,7 +73,10 @@
             </button>
           </form>
           <!-- Registration Form -->
-          <vee-form v-show="tab === 'register'" :validation-schema="schema" @submit="register">
+		  <div class="text-white text-center font-bold p-5 mb-4" v-if="reg_show_alert" :class="reg_alert_varient">
+			  {{ reg_alert_msg }}
+		  </div>
+          <vee-form v-show="tab === 'register'" :validation-schema="schema" @submit="register" :initial-values="userData">
             <!-- Name -->
             <div class="mb-3">
               <label class="inline-block mb-2">Name</label>
@@ -105,9 +109,14 @@
             <div class="mb-3">
               <label class="inline-block mb-2">Password</label>
               <vee-field type="password" name="password"
-                class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
-                  duration-500 focus:outline-none focus:border-black rounded"
-                placeholder="Password" />
+                :bails="false" v-slot="{ field, errors }">
+				<input class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
+                  duration-500 focus:outline-none focus:border-black rounded" type ="password"
+                placeholder="Password" v-bind="field"/>
+				<div class="text-red-600" v-for="error in errors" :key="error">
+					{{error}}
+				</div>
+			  </vee-field>
 			<ErrorMessage class="text-red-600" name="password"/>
             </div>
             <!-- Confirm Password -->
@@ -138,7 +147,7 @@
               <label class="inline-block">Accept terms of service</label>
 			  <ErrorMessage class="text-red-600" name="tos"/>
             </div>
-            <button type="submit"
+            <button type="submit" :disabled="reg_in_submission"
               class="block w-full bg-purple-600 text-white py-1.5 px-3 rounded transition
                 hover:bg-purple-700">
               Submit
@@ -163,10 +172,17 @@ export default {
 		email: 'required|min:3|max:100|email',
 		age: 'required|min_value:18|max_value:120',
 		password: 'required|min:3|max:100',
-		confirm_password: 'confirmed:@password',
-		country: 'required|excluded:Antarctica',
-		tos: 'required',
+		confirm_password: 'passwords_mismatch:@password',
+		country: 'required|country_excluded:Antarctica',
+		tos: 'tos',
 	  },
+	  userData: {
+		country: 'USA',
+	  },
+	  reg_in_submission: false,
+	  reg_show_alert: false,
+	  reg_alert_varient: 'bg-blue-500',
+	  reg_alert_msg: 'Please wait! Your account is being generated.',
     };
   },
   computed: {
@@ -178,6 +194,13 @@ export default {
   methods: {
     ...mapMutations(['toggleAuthModal']),
 	register(values){
+		this.reg_show_alert = true;
+		this.reg_in_submission = true;
+		this.reg_alert_varient = 'bg-blue-500';
+		this.reg_alert_msg = 'Please wait! Your account is being generated.';
+
+		this.reg_alert_varient = 'bg-green-500';
+		this.reg_alert_msg = 'Success! Your account has been created';
 		console.log(values);
 	},
   },
