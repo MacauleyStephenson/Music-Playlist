@@ -38,7 +38,7 @@
               </a>
             </li>
             <li class="flex-auto text-center">
-              <a class="block rounded py-3 px-4 transition hover:text-blue-600"
+              <a class="block rounded py-3 px-4 transition"
                 href="#" @click.prevent="tab = 'register'"
                 :class="{
                   'hover:text-white text-white bg-blue-600': tab === 'register',
@@ -46,8 +46,9 @@
                 }">Register</a>
             </li>
           </ul>
-         <app-login-form v-if="tab === 'login'"/>
-		 <app-register-form v-else />
+
+          <app-login-form v-if="tab === 'login'" />
+          <app-register-form v-else />
         </div>
       </div>
     </div>
@@ -56,20 +57,19 @@
 
 <script>
 import { mapMutations, mapState } from 'vuex';
-import App from '../App.vue';
 import AppLoginForm from './LoginForm.vue';
 import AppRegisterForm from './RegisterForm.vue';
 
 export default {
-  components: { App },
   name: 'Auth',
   components: {
-	  AppLoginForm, AppRegisterForm,
+    AppLoginForm, AppRegisterForm,
   },
   data() {
     return {
       tab: 'login',
-
+    };
+  },
   computed: {
     // ...mapState({
     //   modal: 'authModalShow',
@@ -79,7 +79,5 @@ export default {
   methods: {
     ...mapMutations(['toggleAuthModal']),
   },
-	}
-  }
 };
 </script>
