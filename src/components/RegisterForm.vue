@@ -83,7 +83,7 @@
 </template>
 
 <script>
-import {auth} from '@/includes/firebase';
+import { auth, usersCollection } from '@/includes/firebase';
 
 export default {
 	name: 'RegisterForm',
@@ -122,9 +122,23 @@ export default {
 	} catch(error) {
 		this.reg_in_submission = false;
 		this.reg_alert_variant = 'bg-red-500';
+		this.reg_alert_msg = 'Sorry, but this email address is already in use';
+		return;
+	}
+	try{
+		await usersCollection.add({
+			name: values.name,
+			email: values.email,
+			age: values.age,
+			country: values.country
+		});
+	}	catch (error){
+		this.reg_in_submission = false;
+		this.reg_alert_variant = 'bg-red-500';
 		this.reg_alert_msg = 'An unexpected error occured. Please try again later';
 		return;
 	}
+
 
 		this.reg_alert_variant = 'bg-green-500';
 		this.reg_alert_msg = 'Success! Your account has been created';
