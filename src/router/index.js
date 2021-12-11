@@ -16,15 +16,23 @@ const routes = [
 	},
 	{
 		name: 'manage',
-		path: '/manage',
+		path: '/manage-music',
 		component: Manage,
+	},
+	{
+		path: '/manage',
+		redirect: { name: 'manage' },
+	},
+	{
+		path: '/:catchAll(.*)*',
+		redirect: { name: 'home' },
 	},
 ];
 
 const router = createRouter({
 	history: createWebHashHistory(process.env.BASE_URL),
 	routes,
-	linkActiveClass: 'text-yellow-500',
+	linkExactActiveClass: 'text-yellow-500',
 });
 
 export default router;
