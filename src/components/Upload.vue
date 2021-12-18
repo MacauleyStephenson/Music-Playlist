@@ -29,7 +29,7 @@
                 <!-- Inner Progress Bar -->
                 <div class="transition-all progress-bar bg-blue-400"
 					:class="'bg-blue-400'"
-					:style="{width: upload.current_progress = '%' }">
+					:style="{ width: upload.current_progress = '%' }">
 				</div>
               </div>
             </div>
@@ -71,7 +71,7 @@ export default {
 				}) - 1;
 
 				task.on('state_changed', (snapshot) => 	{
-					const progress = (snapshot.bytesTransferred / snapshot.totalByes) * 100;
+					const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
 					this.uploads[uploadIndex].current_progress = progress;
 				});
 			});
