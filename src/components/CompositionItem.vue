@@ -33,11 +33,17 @@
                   </button>
                 </form>
               </div>
-            </div>
+        </div>
 </template>
 
 <script>
 export default {
 	name: 'CompositionItem',
+	proprs: {
+		song: {
+			type: Object,
+			required: true,
+		},
+	},
 }
 </script>
