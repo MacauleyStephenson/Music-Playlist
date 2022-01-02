@@ -128,7 +128,7 @@
 </template>
 
 <script>
-import { songsCollection } from '@/includes/firebase'
+import { songsCollection, auth, commentsCollection } from '@/includes/firebase'
 
 export default {
 	name: 'Song',
@@ -155,11 +155,27 @@ export default {
 		this.song = docSnapshot.data();
 	},
 	methods: {
-	async addComment(values) {
+	async addComment(values, { resetForm }) {
 		this.comment_in_submission = true;
 		this.comment_show_alert = true;
 		this.comment_alert_varient = 'bg-blue-500';
 		this.comment_alert_mesage = 'please wait, your comment is being submitted';
+
+		const comment = {
+			content: values.comment,
+			datePosted: new Date().toString(),
+			sid: this.route.params.id,
+			name: auth.currentUser.displayName,
+			uid: auth.currentUser.uid,
+		};
+
+		await commentsCollection.add(comment);
+
+		this.comment_in_submission = false;
+		this.comment_alert_varient = 'bg-green-500';
+		this.comment_alert_mesage = 'Comment Added';
+
+		resetForm();
 		},
 	},
 };
