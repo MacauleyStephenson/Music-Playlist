@@ -5,6 +5,7 @@ export default createStore({
 	state: {
 		authModalShow: false,
 		userLoggedIn: false,
+		currentSong: {},
 	},
 	mutations: {
 		toggleAuthModal: (state) => {
@@ -13,6 +14,9 @@ export default createStore({
 		toggleAuth(state) {
 			state.userLoggedIn = !state.userLoggedIn;
 		},
+		newSong(state, payload) {
+			state.currentSong = payload;
+		}
 	},
 	getters: {
 		// authModalShow: (state) => state.authModalShow,
@@ -57,5 +61,8 @@ export default createStore({
 				payload.router.push({ name: 'home' });
 			}
 		},
+		async newSong({ commit }, payload) {
+			commit('newSongs', payload);
+		}
 	},
 });
