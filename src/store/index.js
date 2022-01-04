@@ -29,7 +29,7 @@ export default createStore({
 		// authModalShow: (state) => state.authModalShow,
 		playing: (state) => {
 			if (state.sound.playing) {
-				return state.sound.play();
+				return state.sound.playing();
 			}
 			return false;
 		},
