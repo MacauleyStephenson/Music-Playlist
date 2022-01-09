@@ -3,7 +3,6 @@ import { auth, usersCollection } from '@/includes/firebase';
 import { Howl } from 'howler';
 import helper from '@/includes/helper';
 
-
 export default createStore({
 	state: {
 		authModalShow: false,
@@ -40,6 +39,7 @@ export default createStore({
 			if (state.sound.playing) {
 				return state.sound.playing();
 			}
+
 			return false;
 		},
 	},
@@ -74,14 +74,14 @@ export default createStore({
 				commit('toggleAuth');
 			}
 		},
-		async signout({ commit }, payload) {
+		async signout({ commit }) {
 			await auth.signOut();
 
 			commit('toggleAuth');
 
-			if (payload.route.meta.requiresAuth) {
-				payload.router.push({ name: 'home' });
-			}
+			// if (payload.route.meta.requiresAuth) {
+			//   payload.router.push({ name: 'home' });
+			// }
 		},
 		async newSong({ commit, state, dispatch }, payload) {
 			if (state.sound instanceof Howl) {
@@ -119,12 +119,12 @@ export default createStore({
 			}
 		},
 		updateSeek({ state, dispatch }, payload) {
-			if (state.sound.playing) {
+			if (!state.sound.playing) {
 				return;
 			}
 
 			const { x, width } = payload.currentTarget.getBoundingClientRect();
-			//Document = 2000, Timeline = 1000, Click = 500, Distance = 500
+			// Document = 2000, Timeline = 1000, Click = 500, Distance = 500
 			const clickX = payload.clientX - x;
 			const percentage = clickX / width;
 			const seconds = state.sound.duration() * percentage;
@@ -137,3 +137,4 @@ export default createStore({
 		},
 	},
 });
+
