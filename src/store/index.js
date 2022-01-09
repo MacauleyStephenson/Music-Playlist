@@ -84,14 +84,18 @@ export default createStore({
 			// }
 		},
 		async newSong({ commit, state, dispatch }, payload) {
+
+			if (state.currentSong === payload) {
+				dispatch('toggleAudio');
+				return;
+			}
+
 			if (state.sound instanceof Howl) {
 				state.sound.unload();
 			}
 
 			commit('newSong', payload);
-
 			state.sound.play();
-
 			state.sound.on('play', () => {
 				requestAnimationFrame(() => {
 					dispatch('progress');
