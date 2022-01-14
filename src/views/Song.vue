@@ -71,8 +71,8 @@
 </template>
 
 <script>
-import { songsCollection, auth, commentsCollection } from '@/includes/firebase';
 import { mapState, mapActions, mapGetters } from 'vuex';
+import { songsCollection, auth, commentsCollection } from '@/includes/firebase';
 
 export default {
   name: 'Song',
@@ -91,7 +91,7 @@ export default {
     };
   },
   computed: {
-	...mapGetters(['songPageToggle']),
+    ...mapGetters(['songPageToggle']),
     ...mapState(['userLoggedIn']),
     sortedComments() {
       return this.comments.slice().sort((a, b) => {

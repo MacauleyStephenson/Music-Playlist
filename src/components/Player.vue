@@ -44,16 +44,14 @@
 <script>
 import { mapActions, mapGetters, mapState } from 'vuex';
 
-
 export default {
- name: 'Player',
- computed: {
+  name: 'Player',
+  computed: {
 	 ...mapGetters(['playing']),
 	 ...mapState(['seek', 'duration', 'playerProgress', 'currentSong']),
- },
- methods: {
+  },
+  methods: {
 	 ...mapActions(['toggleAudio', 'updateSeek']),
- },
+  },
 };
 </script>
-
