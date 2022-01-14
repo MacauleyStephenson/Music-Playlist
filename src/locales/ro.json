@@ -1,5 +1,8 @@
 {
   "home": {
     "listen": "Ascultă muzică grozavă!"
+  },
+  "song": {
+    "comment_count": "No comments | 1 comment | {count} Comments"
   }
 }
