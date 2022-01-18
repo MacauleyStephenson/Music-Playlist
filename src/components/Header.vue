@@ -48,9 +48,9 @@ export default {
   name: 'Header',
   computed: {
     ...mapState(['userLoggedIn']),
-	currentLocale() {
-		return this.$i18n.locale === 'ro' ? 'Romanian' : 'English';
-	}
+    currentLocale() {
+      return this.$i18n.locale === 'ro' ? 'Romanian' : 'English';
+    },
   },
   methods: {
     ...mapMutations(['toggleAuthModal']),
@@ -61,13 +61,13 @@ export default {
       });
 
       // console.log(this.$route);
-      if(this.$route.meta.requiresAuth) {
+      if (this.$route.meta.requiresAuth) {
       	this.$router.push({ name: 'home' });
       }
     },
-	changeLocale(){
-		this.$i18n.locale = this.$i18n.locale === 'ro' ? 'en' : 'ro';
-	}
+    changeLocale() {
+      this.$i18n.locale = this.$i18n.locale === 'ro' ? 'en' : 'ro';
+    },
     // toggleAuthModal() {
     //   this.$store.commit('toggleAuthModal');
     // },
