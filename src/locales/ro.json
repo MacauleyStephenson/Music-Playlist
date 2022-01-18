@@ -2,6 +2,9 @@
   "home": {
     "listen": "Ascultă muzică grozavă!"
   },
+  "manage": {
+    "my_songs": "Cântecele Mele"
+  },
   "register": {
     "TOS": "",
     "accept": ""
