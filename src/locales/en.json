@@ -3,7 +3,10 @@
     "listen": "Listen to Great Music!"
   },
   "manage": {
-    "my_songs": "My Songs"
+    "latest": "Latest",
+    "my_songs": "My Songs",
+    "oldest": "Oldest",
+    "submit": "Submit"
   },
   "register": {
     "TOS": "Terms of Service",
