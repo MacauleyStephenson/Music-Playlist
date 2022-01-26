@@ -119,7 +119,7 @@ export default {
 		return;
 		}
 
-		const { sort } = this.$route.query;
+		const { sort } = vm.$route.query;
 
 		// eslint-disable-next-line no-param-reassign
 		vm.sort = sort === '1' || sort === '2' ? sort : '1';
