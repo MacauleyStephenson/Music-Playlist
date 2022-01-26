@@ -8,8 +8,8 @@
       <div class="container mx-auto flex items-center">
         <!-- Play/Pause Button -->
         <button type="button" class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full
-		focus:outline-none" @click.prevent="toggleAudio, newSong(song)">
-		<i class="fas fa-play"></i>
+		focus:outline-none" @click.prevent="toggleAudio, newSong(song)" id="play-button">
+		<i class="fas" :class="{ 'fa-play': !playing, 'fa-pause': playing }"></i>
 		</button>
         <div class="z-50 text-left ml-8">
           <!-- Song Info -->
@@ -112,22 +112,22 @@ export default {
   async newSong({ commit, state, dispatch }, payload) {
 
   /// This if here checks if the payload (song) already is in the state, if so, just toggle play/pause and return, that's it, quite simple.
-  if (state.currentSong === payload) {
-    dispatch('toggleAudio');
-    return;
-  }
+	if (state.currentSong === payload) {
+		dispatch('toggleAudio');
+		return;
+	}
 
-  if (state.sound instanceof Howl) {
-    state.sound.unload();
-  }
-  commit('newSong', payload);
-  state.sound.play();
-  state.sound.on('play', () => {
-    requestAnimationFrame(() => {
-      dispatch('progress');
-    });
-  });
-},
+	if (state.sound instanceof Howl) {
+		state.sound.unload();
+	}
+	commit('newSong', payload);
+	state.sound.play();
+	state.sound.on('play', () => {
+		requestAnimationFrame(() => {
+		dispatch('progress');
+		});
+	});
+	},
   async beforeRouteEnter(to, from, next) {
     const docSnapshot = await songsCollection.doc(to.params.id).get();
 
