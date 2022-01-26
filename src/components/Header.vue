@@ -51,7 +51,7 @@ export default {
 		userLoggedIn: (state) => state.auth.userLoggedIn,
 	}),
     currentLocale() {
-      return this.$i18n.locale === 'ro' ? 'Romanian' : 'English';
+      return this.$i18n.locale === 'ro' ? 'Romana' : 'English';
     },
   },
   methods: {

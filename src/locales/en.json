@@ -3,6 +3,7 @@
     "listen": "Listen to Great Music!"
   },
   "manage": {
+    "comment_here": "Your comment here...",
     "latest": "Latest",
     "my_songs": "My Songs",
     "oldest": "Oldest",
