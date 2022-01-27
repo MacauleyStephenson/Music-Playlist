@@ -16,7 +16,7 @@
             </li>
           <li v-if="!userLoggedIn">
             <a class="px-2 text-white" href="#" @click.prevent="toggleAuthModal">
-              Login / Register
+              {{ $t('heading.login/register') }}
             </a>
           </li>
           <template v-else>
