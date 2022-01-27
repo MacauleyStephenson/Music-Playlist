@@ -1,6 +1,14 @@
 {
+  "heading": {
+    "about": "Despre",
+    "login/register": "Autentificare/Înregistrare",
+    "logout": "Deconectare",
+    "manage": "Administra",
+    "music": "CÂNTECE"
+  },
   "home": {
-    "listen": "Ascultă muzică grozavă!"
+    "listen": "Ascultă muzică grozavă!",
+    "song_list": "Cântece"
   },
   "manage": {
     "comment_here": "Comentariul tau aici...",

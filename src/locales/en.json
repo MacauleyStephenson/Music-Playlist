@@ -1,6 +1,14 @@
 {
+  "heading": {
+    "about": "About",
+    "login/register": "Login/Register",
+    "logout": "Logout",
+    "manage": "Manage",
+    "music": "MUSIC"
+  },
   "home": {
-    "listen": "Listen to Great Music!"
+    "listen": "Listen to Great Music!",
+    "song_list": "Songs"
   },
   "manage": {
     "comment_here": "Your comment here...",
