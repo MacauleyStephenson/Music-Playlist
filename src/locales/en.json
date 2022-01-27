@@ -24,5 +24,8 @@
   },
   "song": {
     "comment_count": "No comments | 1 Comment | {count} Comments"
+  },
+  "upload": {
+    "drop": "Drop your files here"
   }
 }

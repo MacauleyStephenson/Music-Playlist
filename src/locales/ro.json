@@ -24,5 +24,8 @@
   },
   "song": {
     "comment_count": "No comments | 1 comment | {count} Comentarii"
+  },
+  "upload": {
+    "drop": "Aruncă fișierele aici"
   }
 }
