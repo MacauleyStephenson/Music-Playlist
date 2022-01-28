@@ -1,4 +1,11 @@
 {
+  "button": {
+    "go_back": "întoarcere"
+  },
+  "composition": {
+    "genre": "Genul Cântecului",
+    "titlle": "Numele Cantecului"
+  },
   "heading": {
     "about": "Despre",
     "login/register": "Autentificare/Înregistrare",

@@ -1,4 +1,11 @@
 {
+  "button": {
+    "go_back": "Go Back"
+  },
+  "composition": {
+    "genre": "Genre",
+    "titlle": "Song Title"
+  },
   "heading": {
     "about": "About",
     "login/register": "Login/Register",
