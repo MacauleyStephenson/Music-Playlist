@@ -84,6 +84,18 @@
 </template>
 
 <script>
+// import { configure } from 'vee-validate';
+// import { localize } from '@vee-validate/i18n';
+// import en from '@vee-validate/i18n/dist/locale/en.json';
+// import ro from '@vee-validate/i18n/dist/locale/ro.json';
+
+// configure({
+//   generateMessage: localize({
+//     en,
+//     ro,
+//   }),
+// });
+
 export default {
   name: 'RegisterForm',
   data() {
