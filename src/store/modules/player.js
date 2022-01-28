@@ -11,11 +11,10 @@ export default {
 	},
 	getters: {
 		// authModalShow: (state) => state.authModalShow,
-		playing: (state) => {
+		songPageToggle: (state) => {
 			if (state.sound.playing) {
 				return state.sound.playing();
 			}
-
 			return false;
 		},
 	},
