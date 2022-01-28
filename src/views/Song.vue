@@ -9,7 +9,7 @@
         <!-- Play/Pause Button -->
         <button type="button" class="z-50 h-24 w-24 text-3xl bg-white text-black rounded-full
 		focus:outline-none" @click.prevent="toggleAudio, newSong(song)" id="play-button">
-		<i class="fas" :class="{ 'fa-play': !playing, 'fa-pause': playing }"></i>
+		<i class="fas" :class="{ 'fa-play': !songPageToggle, 'fa-pause': songPageToggle }"></i>
 		</button>
         <div class="z-50 text-left ml-8">
           <!-- Song Info -->
@@ -75,7 +75,7 @@
 </template>
 
 <script>
-import { mapState, mapActions, Howl } from 'vuex';
+import { mapState, mapActions, mapGetters, Howl } from 'vuex';
 import { songsCollection, auth, commentsCollection } from '@/includes/firebase';
 
 export default {
@@ -95,7 +95,7 @@ export default {
     };
   },
   computed: {
-    // ...mapGetters(['songPageToggle']),
+    ...mapGetters(['songPageToggle']),
     ...mapState({
 		userLoggedIn: (state) => state.auth.userLoggedIn,
 	}),
