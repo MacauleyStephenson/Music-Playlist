@@ -17,6 +17,12 @@ export default {
 			}
 			return false;
 		},
+		playing: (state) => {
+			if (state.sound.playing) {
+				return state.sound.playing();
+			}
+			return false;
+		},
 	},
 	mutations: {
 		newSong(state, payload) {
