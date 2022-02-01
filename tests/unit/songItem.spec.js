@@ -1,6 +1,7 @@
 import SongItem from '@/components/SongItem.vue';
 import { shallowMount, RouterLinkStub } from '@vue/test-utils';
 
+
 describe('songItem.vue', () => {
 
 	test('renders song.display.name', () => {
@@ -19,6 +20,8 @@ describe('songItem.vue', () => {
 			},
 		});
 
-		expect(wrapper.text()).toContain(song.display_name);
+		const compositionAuthor = wrapper.find('.text-gray-500');
+
+		expect(compositionAuthor.text()).toBe(song.display_name);
 	});
 });
